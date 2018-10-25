@@ -10,7 +10,7 @@
 	* Демонстрация фильтрации.
 	* Удалить лишний код, причесать исходник.
 	
-	igorkov / 2014 / fsp@igorkov.org
+	igorkov / 2014-2015 / fsp@igorkov.org
  */
 
 #include <stdio.h>
@@ -437,7 +437,9 @@ int graph_destroy(pvisual_t vis);
 
 #if defined( __TEST__ )
 
-//#include "pid.h"
+#if defined( __PID__ )
+#include "pid.h"
+#endif
 
 int main(int argc, char **argv)
 {
@@ -446,8 +448,8 @@ int main(int argc, char **argv)
 	
 	visual_t vis1;
 	visual_t vis2;
-	
-#if 0
+
+#if defined( __PID__ )	
 	pid_struct_t pid1;
 	pid_struct_t pid2;
 #endif
@@ -469,7 +471,7 @@ int main(int argc, char **argv)
 		printf("graph_create (2) return %d!\n", ret);
 	}
 	
-#if 0
+#if defined( __PID__ )	
 	pid_init(&pid1, 0.00005f, 4.0f, 300.0f, 10.0f);
 #endif
 
@@ -480,21 +482,21 @@ int main(int argc, char **argv)
 	{
 		float value;
 
-#if 0
+#if defined( __PID__ )	
 		#define dT 0.01f
 		
 		value = pid_update(&pid1, targetPosition, currentPosition);
 		
 		speed += value * dT;
-		//if (speed > 10.0f) speed = 10.0f;
-		//if (speed < -10.0f) speed = -10.0f;
+		if (speed > 10.0f) speed = 10.0f;
+		if (speed < -10.0f) speed = -10.0f;
 		currentPosition += speed * dT;
 		
 		graph_add(&vis2, currentPosition, VIS_COLOR_RED);
 		graph_add(&vis2, value/10, VIS_COLOR_YELLOW);
 		graph_add(&vis2, speed, VIS_COLOR_GREEN);
 		graph_add(&vis2, targetPosition, 0);
-#elif 1
+#else
 		value = cosf((float)i/30);
 		graph_add(&vis1, value, (i/10)%(VIS_COLOR_MAX-1)+1);
 		value = sinf((float)i/20);
@@ -509,7 +511,16 @@ int main(int argc, char **argv)
 		graph_add(&vis2, NAN, VIS_COLOR_WHITE);
 #endif
 
-		if (i>600) Sleep(100);
+		if (i>600) Sleep(10);
+		if (i>600) {
+			if ((i%500)==0) {
+				if (targetPosition == 1.0f) {
+					targetPosition = 0.0f;
+				} else {
+					targetPosition = 1.0f;
+				}
+			}
+		}
 		i++;
 	}
 	

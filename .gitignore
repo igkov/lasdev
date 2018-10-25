@@ -1,1 +1,15 @@
 *.tmp
+*.out
+*.out_rel
+pc-simple-hid/simple.exe
+pc-viz/simple.exe
+pc-viz/simplebt.exe
+pc/bin2c.exe
+pc/lascond.exe
+mcu-frw/laserfrw.bin
+mcu-frw/laserfrw_bt.bin
+mcu-frw/laserfrw_rel.bin
+*.uvgui.*
+*.dep
+*bak
+pc/resource.o

@@ -1101,8 +1101,8 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>.\hex2bin.exe -s 0x00008000 -b 0x00000000 -o laserfrw.bin ".\.out\laserfrw.hex"</UserProg1Name>
-            <UserProg2Name>.\makecrc.exe CORTEX laserfrw.bin</UserProg2Name>
+            <UserProg1Name>.\hex2bin.exe -s 0x00008000 -b 0x00000000 -o laserfrw_bt.bin ".\.out\laserfrw.hex"</UserProg1Name>
+            <UserProg2Name>.\makecrc.exe CORTEX laserfrw_bt.bin</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>

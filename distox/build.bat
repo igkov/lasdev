@@ -1,0 +1,1 @@
+gcc -m32 -s -Os -o distox.exe distox.c comn.c -lgdi32 -lComdlg32 -lhid -lsetupapi -lwinmm

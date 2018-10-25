@@ -1,0 +1,290 @@
+Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = 15.01.2014 1:00:14
+
+BeginCmp
+TimeStamp = /52975A5E;
+Reference = C1;
+ValeurCmp = 0.1;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52974A75;
+Reference = C2;
+ValeurCmp = 22p;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52974AB9;
+Reference = C3;
+ValeurCmp = 22p;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5291BA4B;
+Reference = C4;
+ValeurCmp = 0.1;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52974672;
+Reference = C5;
+ValeurCmp = 4.7u;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /529746D8;
+Reference = C6;
+ValeurCmp = 4.7u;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /529746C9;
+Reference = C7;
+ValeurCmp = 0.1;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A654;
+Reference = C8;
+ValeurCmp = 4.7u;
+IdModule  = c_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A60D;
+Reference = C9;
+ValeurCmp = 0.22u;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A793;
+Reference = C10;
+ValeurCmp = 0.1;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5291B78D;
+Reference = D1;
+ValeurCmp = LPC134XFBD48;
+IdModule  = LQFP48;
+EndCmp
+
+BeginCmp
+TimeStamp = /5291B838;
+Reference = D2;
+ValeurCmp = LSM303DLHC;
+IdModule  = LGA-14;
+EndCmp
+
+BeginCmp
+TimeStamp = /5291B84C;
+Reference = D3;
+ValeurCmp = LP2985IM5-3.3/NOPB;
+IdModule  = SOT23-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A926;
+Reference = D4;
+ValeurCmp = 25512;
+IdModule  = SSOP8;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2AABB;
+Reference = D5;
+ValeurCmp = AM6326;
+IdModule  = SOT23A;
+EndCmp
+
+BeginCmp
+TimeStamp = /5291B8AD;
+Reference = Q1;
+ValeurCmp = KX-7_12MHZ;
+IdModule  = KX-7;
+EndCmp
+
+BeginCmp
+TimeStamp = /52975982;
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52975991;
+Reference = R2;
+ValeurCmp = 4.7k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /529759A7;
+Reference = R3;
+ValeurCmp = 4.7k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5297295A;
+Reference = R4;
+ValeurCmp = 33;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52972969;
+Reference = R5;
+ValeurCmp = 33;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52974487;
+Reference = R6;
+ValeurCmp = 1.5k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52972987;
+Reference = R7;
+ValeurCmp = 100k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D41080;
+Reference = VD1;
+ValeurCmp = BAT54C;
+IdModule  = SOT23;
+EndCmp
+
+BeginCmp
+TimeStamp = /52972978;
+Reference = VT1;
+ValeurCmp = IRLML6402;
+IdModule  = SOT23A;
+EndCmp
+
+BeginCmp
+TimeStamp = /52977385;
+Reference = X1;
+ValeurCmp = 3.3V;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /529772CC;
+Reference = X2;
+ValeurCmp = RX;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /529772DB;
+Reference = X3;
+ValeurCmp = TX;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52977326;
+Reference = X4;
+ValeurCmp = GND;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A6EB;
+Reference = X5;
+ValeurCmp = SCK;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A6EF;
+Reference = X6;
+ValeurCmp = CS;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A6F2;
+Reference = X7;
+ValeurCmp = MOSI;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2ADCD;
+Reference = X8;
+ValeurCmp = RES1;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A511;
+Reference = X9;
+ValeurCmp = PWR5V;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A50D;
+Reference = X10;
+ValeurCmp = DM;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2A515;
+Reference = X11;
+ValeurCmp = DP;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D2C7BB;
+Reference = X12;
+ValeurCmp = BOOT;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D41432;
+Reference = X13;
+ValeurCmp = RES2;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D41496;
+Reference = X14;
+ValeurCmp = RES3;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D596FE;
+Reference = X15;
+ValeurCmp = RES4;
+IdModule  = PAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D5A525;
+Reference = X16;
+ValeurCmp = RES5;
+IdModule  = PAD;
+EndCmp
+
+EndListe

@@ -1,0 +1,326 @@
+# EESchema Netlist Version 1.1 created  15.01.2014 1:00:14
+(
+ ( /52975A5E SM0603 C1 0.1
+  ( 1 GND )
+  ( 2 /RESET )
+ )
+ ( /52974A75 SM0603 C2 22p
+  ( 1 N-000048 )
+  ( 2 GND )
+ )
+ ( /52974AB9 SM0603 C3 22p
+  ( 1 N-000052 )
+  ( 2 GND )
+ )
+ ( /5291BA4B SM0603 C4 0.1
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /52974672 SM0603 C5 4.7u
+  ( 1 /USB_VBUS )
+  ( 2 GND )
+ )
+ ( /529746D8 SM0603 C6 4.7u
+  ( 1 N-000057 )
+  ( 2 GND )
+ )
+ ( /529746C9 SM0603 C7 0.1
+  ( 1 N-000049 )
+  ( 2 GND )
+ )
+ ( /52D2A654 c_1206 C8 4.7u
+  ( 1 N-000036 )
+  ( 2 GND )
+ )
+ ( /52D2A60D SM0603 C9 0.22u
+  ( 1 N-000035 )
+  ( 2 N-000053 )
+ )
+ ( /52D2A793 SM0603 C10 0.1
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /5291B78D LQFP48 D1 LPC134XFBD48
+  ( 1 ? )
+  ( 2 ? )
+  ( 3 /RESET )
+  ( 4 /BOOT )
+  ( 5 GND )
+  ( 6 N-000048 )
+  ( 7 N-000052 )
+  ( 8 VCC )
+  ( 9 ? )
+  ( 10 /CS )
+  ( 11 ? )
+  ( 12 ? )
+  ( 13 ? )
+  ( 14 /USB_VBUS )
+  ( 15 /SCL )
+  ( 16 /SDA )
+  ( 17 /RES4 )
+  ( 18 /RES2 )
+  ( 19 /DM )
+  ( 20 /DP )
+  ( 21 ? )
+  ( 22 /USB_CONN )
+  ( 23 ? )
+  ( 24 /RES3 )
+  ( 25 ? )
+  ( 26 ? )
+  ( 27 /MISO )
+  ( 28 /MOSI )
+  ( 29 ? )
+  ( 30 ? )
+  ( 31 /SCK )
+  ( 32 ? )
+  ( 33 ? )
+  ( 34 ? )
+  ( 35 ? )
+  ( 36 /LCD_MOSI )
+  ( 37 /LCD_SCK )
+  ( 38 /RES5 )
+  ( 39 ? )
+  ( 40 ? )
+  ( 41 GND )
+  ( 42 ? )
+  ( 43 /LCD_CS )
+  ( 44 VCC )
+  ( 45 ? )
+  ( 46 /RX )
+  ( 47 /TX )
+  ( 48 /RES1 )
+ )
+ ( /5291B838 LGA-14 D2 LSM303DLHC
+  ( 1 VCC )
+  ( 2 /SCL )
+  ( 3 /SDA )
+  ( 4 ? )
+  ( 5 ? )
+  ( 6 N-000036 )
+  ( 7 GND )
+  ( 8 ? )
+  ( 9 ? )
+  ( 10 GND )
+  ( 11 GND )
+  ( 12 N-000053 )
+  ( 13 N-000035 )
+  ( 14 VCC )
+ )
+ ( /5291B84C SOT23-5 D3 LP2985IM5-3.3/NOPB
+  ( 1 /USB_VBUS )
+  ( 2 GND )
+  ( 3 /USB_VBUS )
+  ( 4 N-000049 )
+  ( 5 N-000057 )
+ )
+ ( /52D2A926 SSOP8 D4 25512
+  ( 1 /CS )
+  ( 2 /MISO )
+  ( 3 N-000023 )
+  ( 4 GND )
+  ( 5 /MOSI )
+  ( 6 /SCK )
+  ( 7 VCC )
+  ( 8 VCC )
+ )
+ ( /52D2AABB SOT23A D5 AM6326
+  ( 1 GND )
+  ( 2 N-000023 )
+  ( 3 VCC )
+ )
+ ( /5291B8AD KX-7 Q1 KX-7_12MHZ
+  ( 1 N-000048 )
+  ( 2 GND )
+  ( 3 N-000052 )
+  ( 4 GND )
+ )
+ ( /52975982 SM0603 R1 10k
+  ( 1 VCC )
+  ( 2 /RESET )
+ )
+ ( /52975991 SM0603 R2 4.7k
+  ( 1 VCC )
+  ( 2 /SCL )
+ )
+ ( /529759A7 SM0603 R3 4.7k
+  ( 1 VCC )
+  ( 2 /SDA )
+ )
+ ( /5297295A SM0603 R4 33
+  ( 1 N-000046 )
+  ( 2 /DM )
+ )
+ ( /52972969 SM0603 R5 33
+  ( 1 N-000050 )
+  ( 2 /DP )
+ )
+ ( /52974487 SM0603 R6 1.5k
+  ( 1 N-000050 )
+  ( 2 N-000051 )
+ )
+ ( /52972987 SM0603 R7 100k
+  ( 1 /USB_CONN )
+  ( 2 VCC )
+ )
+ ( /52D41080 SOT23 VD1 BAT54C
+  ( 1 N-000043 )
+  ( 2 N-000057 )
+  ( 3 VCC )
+ )
+ ( /52972978 SOT23A VT1 IRLML6402
+  ( 1 /USB_CONN )
+  ( 2 VCC )
+  ( 3 N-000051 )
+ )
+ ( /52977385 PAD X1 3.3V
+  ( 1 N-000043 )
+ )
+ ( /529772CC PAD X2 RX
+  ( 1 /RX )
+ )
+ ( /529772DB PAD X3 TX
+  ( 1 /TX )
+ )
+ ( /52977326 PAD X4 GND
+  ( 1 GND )
+ )
+ ( /52D2A6EB PAD X5 SCK
+  ( 1 /LCD_SCK )
+ )
+ ( /52D2A6EF PAD X6 CS
+  ( 1 /LCD_CS )
+ )
+ ( /52D2A6F2 PAD X7 MOSI
+  ( 1 /LCD_MOSI )
+ )
+ ( /52D2ADCD PAD X8 RES1
+  ( 1 /RES1 )
+ )
+ ( /52D2A511 PAD X9 PWR5V
+  ( 1 /USB_VBUS )
+ )
+ ( /52D2A50D PAD X10 DM
+  ( 1 N-000046 )
+ )
+ ( /52D2A515 PAD X11 DP
+  ( 1 N-000050 )
+ )
+ ( /52D2C7BB PAD X12 BOOT
+  ( 1 /BOOT )
+ )
+ ( /52D41432 PAD X13 RES2
+  ( 1 /RES2 )
+ )
+ ( /52D41496 PAD X14 RES3
+  ( 1 /RES3 )
+ )
+ ( /52D596FE PAD X15 RES4
+  ( 1 /RES4 )
+ )
+ ( /52D5A525 PAD X16 RES5
+  ( 1 /RES5 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C8
+ SM*
+ C?
+ C1-1
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$endfootprintlist
+}

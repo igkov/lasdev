@@ -1,0 +1,13 @@
+case 0xFF: // End Bluetooth session:
+case 0x00: // Test command:
+case 0x01: // Get time:
+case 0x05: // Read config/info...
+case 0x08: // Read Sensor:
+case 0x09: // Read EEPROM:
+case 0x02: // Set time:
+case 0x03: // Clear FLASH memory (clear log memory):
+case 0x04: // Read FLASH memory:
+case 0x06: // Write config...
+case 0x07: // Get voltage (test command):
+case 0x0A: // Write EEPROM:
+case 0x0C: // Read log unit:

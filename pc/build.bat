@@ -1,5 +1,5 @@
 @REM Собираем утилиту bin2c:
-@REM gcc -s -Os -I../libs -o bin2c.exe bin2c.c ../libs/file.c
+ gcc -s -Os -I../libs -o bin2c.exe bin2c.c ../libs/file.c
 
 @REM Генерируем образ загрузчика:
 bin2c.exe ../mcu-loader/loader.bin loader > loader.c

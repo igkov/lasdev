@@ -23,8 +23,8 @@ int main(int argc, void **argv)
 	uint8_t buff[1024];
 	com_struct_t com;
 	
-	//int port = 9;
-	int port = 41;
+	int port = 9;
+	//int port = 41;
 	
 	ret = com_init(&com, port, 115200);
 	if (ret)

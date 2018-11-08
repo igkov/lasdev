@@ -6,9 +6,11 @@ pc-viz/simple.exe
 pc-viz/simplebt.exe
 pc/bin2c.exe
 pc/lascond.exe
+pc-simple-bt/bt.exe
 mcu-frw/laserfrw.bin
 mcu-frw/laserfrw_bt.bin
 mcu-frw/laserfrw_rel.bin
+mcu-cdc/usbcdc.bin
 *.uvgui.*
 *.dep
 *bak

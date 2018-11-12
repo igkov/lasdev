@@ -159,7 +159,7 @@ void led_blink(void)
 	led_state = led_state ? 0 : 1;
 	led_red(led_state);
 	
-	event_set(0, led_blink, 500);
+	event_set(led_blink, 500);
 }
 
 void frw_dispatch(int p)
@@ -833,7 +833,7 @@ calibration_error:
 				if (caln == -1)
 				{
 					caln = 1;
-					event_set(1, event_caln_clr, 4000); // 5 нажатий за 4 секунды
+					event_set(event_caln_clr, 4000); // 5 нажатий за 4 секунды
 				}
 				else
 				{
@@ -841,7 +841,7 @@ calibration_error:
 					// Если набрали нужное количество нажатий:
 					if (caln == 5)
 					{
-						event_unset(1);
+						event_unset(event_caln_clr);
 						// Переходим в режим калибровки.
 						caln = 0;
 						mode = MODE_CALIBRATION;

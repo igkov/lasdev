@@ -395,7 +395,7 @@ const uint8_t key[32] = FRW_CRYPT_KEY;
 int main(void)
 {
 	volatile int n;
-	uint32_t cbc1, cbc2;
+	uint32_t cbc1 = 0, cbc2 = 0;
 
 	{
 		// IOCON
@@ -592,6 +592,23 @@ int main(void)
 					}
 				}
 				break;
+#if 1
+			// Временная логика для чтения данных:
+			case OP_FW_READ_BLOCK:
+				{
+					uint32_t dwAddr = pdata->pc2dev_read.dwAddr;
+					bLen = pdata->pc2dev_read.bLen;
+					if (bLen > 64-8) {
+						bError = 0x01;
+						bLen = 0;
+					} else {
+						// Обнуляем буфер:
+						memcpy(abDataIn, (void*)dwAddr, bLen);
+						bError = 0x00;
+					}					
+				}
+				break;
+#endif
 			case OP_FW_CLEAR:
 				{
 					uint8_t password_1[] = FW_CLEAR_VECTOR;

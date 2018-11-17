@@ -47,6 +47,7 @@
 
 
 // FRW Clear command:
+#define OP_FW_READ_BLOCK     0xCA
 #define OP_FW_SWITCH         0xCB
 #define OP_FW_CLEAR          0xCC
 #define OP_FW_WRITE_RAM      0xCD
@@ -188,6 +189,16 @@ typedef union
 		uint8_t bLen;
 		uint8_t abData[];
 	} pc2dev;
+
+	struct
+	{
+		uint8_t  bOperation;
+		uint8_t  bLen;
+		uint8_t  bRes1;
+		uint8_t  bRes2;
+		uint32_t dwAddr;
+		uint8_t abData[64-8];
+	} pc2dev_read;
 	
 	struct 
 	{

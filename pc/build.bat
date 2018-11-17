@@ -8,8 +8,9 @@ bin2c.exe ../mcu-loader/loader.bin loader > loader.c
 windres.exe resource.rc resource.o
 
 @REM —борка публичной версии утилиты:
-@REM gcc -m32 -Wall -Wno-missing-braces -Os -s -DDEVELOPER_BUILD=0 -DGRAPH_SUPPORT=1 -I../libs -o lascon.exe main.c ../libs/hid.c ../libs/file.c ../libs/crc.c ../libs/solve.c ../libs/vector.c ../libs/gost.c ../libs/symbols.c graph.c ../libs/draw.c ../libs/printf.c ../libs/lowpass.c -lhid -lsetupapi -lGdi32 resource.o 
+@REM gcc -m32 -Wall -Wno-missing-braces -Os -s -DDEVELOPER_BUILD=0 -DGRAPH_SUPPORT=0 -I../libs -o lascon.exe main.c ../libs/hid.c ../libs/file.c ../libs/crc.c ../libs/solve.c ../libs/vector.c ../libs/gost.c ../libs/symbols.c  ../libs/draw.c ../libs/printf.c ../libs/lowpass.c -lhid -lsetupapi -lGdi32 resource.o 
+@REM ../libs/graph.c
 
 @REM —борка полной версии утилиты:
-gcc -Wall -Wno-missing-braces -Os -s -DDEVELOPER_BUILD=1 -DGRAPH_SUPPORT=1 -I../libs -o lascond.exe main.c ../libs/hid.c ../libs/file.c ../libs/crc.c ../libs/solve.c ../libs/vector.c ../libs/orientation.c ../libs/gost.c ../libs/symbols.c ../libs/draw.c ../libs/printf.c ../libs/lowpass.c ../libs/calibrate.c ../libs/lcd.c loader.c -lhid -lsetupapi -lGdi32 -lComdlg32 resource.o 
+gcc -Wall -Wno-missing-braces -Os -s -DDEVELOPER_BUILD=1 -DGRAPH_SUPPORT=1 -I../libs -o lascond.exe main.c ../libs/hid.c ../libs/file.c ../libs/crc.c ../libs/solve.c ../libs/vector.c ../libs/orientation.c ../libs/gost.c ../libs/symbols.c ../libs/draw.c ../libs/printf.c ../libs/lowpass.c ../libs/calibrate.c ../libs/solve9.c ../libs/lcd.c loader.c -lhid -lsetupapi -lGdi32 -lComdlg32 resource.o 
 @REM -m32 

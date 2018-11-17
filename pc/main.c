@@ -264,6 +264,56 @@ rep_read_answer_w2:
 	return data_io->dev2pc.bRetStatus;
 }
 
+#if (DEVELOPER_BUILD == 1)
+/*
+	frw_read()
+	Обратное чтение памяти контроллера.
+	Отладочный функционал.
+ */
+int frw_read(uint8_t *data, uint32_t addr, int len)
+{
+	int ret;
+	unsigned char buffer[64];
+	io_data_t *data_io = (io_data_t*)buffer;
+	int i;
+	int lenb = 56;
+	
+	// Цепочка блоков 56+56+56+56+32
+	for (i = 0; i < len; i += lenb)
+	{
+		if ((i + lenb) > len) {
+			lenb = (len-i);
+		}
+		
+		data_io->pc2dev_read.bOperation = OP_FW_READ_BLOCK;
+		data_io->pc2dev_read.bLen       = lenb;
+		data_io->pc2dev_read.dwAddr     = addr;
+		
+		ret = hid_write(&device, buffer, 64);
+		if (ret == 0)
+		{
+			return -1;
+		}
+		
+rep_read_answer_w:
+		ret = hid_read(&device, buffer, 64);
+		if (ret == 0)
+		{
+			return -1;
+		}
+		
+		if (data_io->dev2pc.bRetStatus == 0xFF)
+		{
+			goto rep_read_answer_w;
+		}
+		
+		memcpy((uint8_t*)&data[i], data_io->dev2pc.abData, lenb);
+	}
+	
+	return data_io->dev2pc.bRetStatus;
+}
+#endif
+
 /*
 	frw_get_hw()
 	Получение аппаратной версии устройтсва.
@@ -1809,86 +1859,87 @@ int main(int argc, char **argv)
 		}
 		i++;
 	}
-
+	
 	if (btf == 0)
 	{
 repeate_connect:
-	// Проверяем, что данный режим предусматривает наличие устройства:
-	if (mode != MODE_UND &&
-		mode != MODE_TEST_FRW && 
-		mode != MODE_CALC_FRW &&
-		mode != MODE_LOADER /*&&
-		mode != MODE_GRAPH_CONFIG*/)
-	{
-		ret = 0;
-		if (mode == MODE_SET_FRW ||
-			mode == MODE_SET_FRWF ||
-			mode == MODE_ERASE_FRWF)
+		// Проверяем, что данный режим предусматривает наличие устройства:
+		if (mode != MODE_UND &&
+			mode != MODE_TEST_FRW && 
+			mode != MODE_CALC_FRW &&
+			mode != MODE_LOADER /*&&
+			mode != MODE_GRAPH_CONFIG*/)
 		{
-			printf("Open FWU device... ");
-			ret = hid_find(&device, 0x1FC9, 0x0031, 0xFF00);
-			if (ret == 0)
+			ret = 0;
+			if (mode == MODE_SET_FRW ||
+				mode == MODE_SET_FRWF ||
+				mode == MODE_ERASE_FRWF)
 			{
-				// Зануляем hDeviceHandle.
-				device.hDeviceHandle = NULL;
-				// Не найдено!
-				printf("not found!\r\n");
-				if (rep > 0)
+				printf("Open FWU device... ");
+				ret = hid_find(&device, 0x1FC9, 0x0031, 0xFF00);
+				if (ret == 0)
 				{
-					// nop
+					// Зануляем hDeviceHandle.
+					device.hDeviceHandle = NULL;
+					// Не найдено!
+					printf("not found!\r\n");
+					if (rep > 0)
+					{
+						// nop
+					}
+					else
+					{
+						if (mode == MODE_ERASE_FRWF)
+						{
+							// для режима KILL не пытаемся переключиться.
+							return 0;
+						}
+						mode = MODE_SET_FRWF;
+						goto connect_std;
+					}
 				}
 				else
 				{
-					if (mode == MODE_ERASE_FRWF)
+					printf("OK!\r\n");
+				}
+			}
+			else
+			{
+connect_std:
+				printf("Open STD device... ");
+				ret = hid_find(&device, 0x1FC9, 0x0007, 0xFF00);
+				
+				if (ret == 0)
+				{
+					// Зануляем hDeviceHandle.
+					device.hDeviceHandle = NULL;
+					// Не найдено:
+					printf("\r\n");
+					if (mode == MODE_GRAPH_CONFIG)
 					{
-						// для режима KILL не пытаемся переключиться.
+						printf("\r\n");
+						printf("WARNING: Device not found!\r\n");
+					}
+					else
+					{
+						printf("\r\n");
+						printf("ERROR: Device not found!\r\n");
 						return 0;
 					}
-					mode = MODE_SET_FRWF;
-					goto connect_std;
-				}
-			}
-			else
-			{
-				printf("OK!\r\n");
-			}
-		}
-		else
-		{
-connect_std:
-			printf("Open STD device... ");
-			ret = hid_find(&device, 0x1FC9, 0x0007, 0xFF00);
-			
-			if (ret == 0)
-			{
-				// Зануляем hDeviceHandle.
-				device.hDeviceHandle = NULL;
-				// Не найдено:
-				printf("\r\n");
-				if (mode == MODE_GRAPH_CONFIG)
-				{
-					printf("\r\n");
-					printf("WARNING: Device not found!\r\n");
 				}
 				else
 				{
-					printf("\r\n");
-					printf("ERROR: Device not found!\r\n");
-					return 0;
+					printf("OK!\r\n");
 				}
 			}
-			else
+			
+			if (consf == 0)
 			{
-				printf("OK!\r\n");
+				getch();
 			}
 		}
-		
-		if (consf == 0)
-		{
-			getch();
-		}
 	}
-	else
+	else // btf == 1
 	{
 		// Bluetooth
 		// TODO
@@ -1906,7 +1957,7 @@ connect_std:
 		case MODE_CALC_CALIBRATIONA:
 		
 		default:
-			printf();
+			printf("todo");
 		}
 		
 		// 4. close bt port:
@@ -2698,13 +2749,13 @@ connect_std:
 			
 			if (mode == MODE_CALC_CALIBRATION)
 			{
-				values_a = (pvector3df_t)malloc(sizeof(vector3df)*MAX_K);
-				values_m = (pvector3df_t)malloc(sizeof(vector3df)*MAX_K);
+				values_a = (pvector3df_t)malloc(sizeof(vector3df_t)*MAX_K);
+				values_m = (pvector3df_t)malloc(sizeof(vector3df_t)*MAX_K);
 			}
 			else if (mode == MODE_CALC_CALIBRATIONA)
 			{
-				values_a = (pvector3df_t)malloc(sizeof(vector3df)*MAXA_K);
-				values_m = (pvector3df_t)malloc(sizeof(vector3df)*MAXA_K);
+				values_a = (pvector3df_t)malloc(sizeof(vector3df_t)*MAXA_K);
+				values_m = (pvector3df_t)malloc(sizeof(vector3df_t)*MAXA_K);
 			}
 			
 			// Получаем информацию об устройстве:
@@ -2774,6 +2825,7 @@ connect_std:
 					
 					k++;
 				}
+			}
 			else if (mode == MODE_CALC_CALIBRATIONA)
 			{
 				//
@@ -2787,18 +2839,14 @@ connect_std:
 				}
 			}
 			
-#if ( DEVELOPER_BUILD == 1 )
 			printf("Work calibration_calc():\r\n");
-#endif
 			ret = calibration_calc(values_a, values_m, k, &cal_a, &cal_m);
 			if (ret)
 			{
 				printf("ERROR: calibration_calc() return %d!\r\n", ret);
 				goto close_and_exit;
 			}
-#if ( DEVELOPER_BUILD == 1 )
 			printf("Work calibration_calc9():\r\n");
-#endif
 			ret = calibration_calc9(values_a, values_m, k, &cal9_a, &cal9_m);
 			if (ret)
 			{
@@ -3381,6 +3429,10 @@ void help(void)
 	printf("\t\tTurn on LCD and send it data. Optional testing segments.\r\n");
 	//printf("\t-xxx");
 	//pritnf("\t\tyyy");
+#endif
+#if (DEVELOPER_BUILD != 0)
+	printf("Debug read memory:\r\n");
+	printf("\t-read\r\n");
 #endif
 	printf("\r\n");
 	//exit(0);

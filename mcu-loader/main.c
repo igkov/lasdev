@@ -603,7 +603,7 @@ int main(void)
 						bLen = 0;
 					} else {
 						// Обнуляем буфер:
-						memcpy(abDataIn, (void*)dwAddr, bLen);
+						memcpy(abData, (void*)dwAddr, bLen);
 						bError = 0x00;
 					}					
 				}

@@ -287,7 +287,7 @@ int frw_read(uint8_t *data, uint32_t addr, int len)
 		
 		data_io->pc2dev_read.bOperation = OP_FW_READ_BLOCK;
 		data_io->pc2dev_read.bLen       = lenb;
-		data_io->pc2dev_read.dwAddr     = addr;
+		data_io->pc2dev_read.dwAddr     = addr+i;
 		
 		ret = hid_write(&device, buffer, 64);
 		if (ret == 0)
@@ -1228,6 +1228,7 @@ extern uint32_t loader_len;
 /* Тест LCD: */
 #define MODE_TEST_LCD            0x1C
 
+#define MODE_READ_ISP            0x1D
 
 /*
 	Форматы сохранения во внешние файлы.
@@ -1341,6 +1342,12 @@ int main(int argc, char **argv)
 			// Получение общей информации.
 			// Дублирование ветки -get info
 			mode = MODE_GET_INFO;
+		}
+		else if (_stricmp(argv[i], "-read") == 0)
+		{
+			// Получение данных.
+			// Дублирование ветки -get info
+			mode = MODE_READ_ISP;
 		}
 		else if (_stricmp(argv[i], "-get") == 0)
 		{
@@ -1873,7 +1880,8 @@ repeate_connect:
 			ret = 0;
 			if (mode == MODE_SET_FRW ||
 				mode == MODE_SET_FRWF ||
-				mode == MODE_ERASE_FRWF)
+				mode == MODE_ERASE_FRWF ||
+				mode == MODE_READ_ISP)
 			{
 				printf("Open FWU device... ");
 				ret = hid_find(&device, 0x1FC9, 0x0031, 0xFF00);
@@ -3318,6 +3326,26 @@ write_loader:
 #else
 			laser_lcd_send_low();
 #endif
+		}
+		goto close_and_exit;
+	case MODE_READ_ISP:
+		// Режим -заточен на чтение ISP-области данных:
+		{
+			#define READ_ADDR 0x1FFF0000
+			#define READ_SIZE 0x2000
+			uint8_t *data = (uint8_t*)malloc(READ_SIZE*sizeof(uint8_t));
+			FILE *f;
+			printf("ISP dump...\r\n");
+			ret = frw_read(data, READ_ADDR, READ_SIZE);
+			if (ret) {
+				printf("frw_read() return %d!\r\n", ret);
+			} else {
+				printf("ISP dump ok! Saving...\r\n");
+				
+				f = fopen("dump_isp.bin", "wb");
+				fwrite(data, 1, READ_SIZE, f);
+				fclose(f);
+			}
 		}
 		goto close_and_exit;
 #endif

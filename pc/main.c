@@ -3332,7 +3332,7 @@ write_loader:
 		// Режим -заточен на чтение ISP-области данных:
 		{
 			#define READ_ADDR 0x1FFF0000
-			#define READ_SIZE 0x2000
+			#define READ_SIZE 0x4000
 			uint8_t *data = (uint8_t*)malloc(READ_SIZE*sizeof(uint8_t));
 			FILE *f;
 			printf("ISP dump...\r\n");
